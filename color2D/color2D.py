@@ -1,13 +1,16 @@
 import re
-import pathlib
+import pkg_resources
 
 import imageio
 
 
-SCRIPTPATH = pathlib.Path(__file__).resolve().parent
-
 COLORMAPS = {
-    p.stem: p for p in SCRIPTPATH.glob("data/*.png")
+    "bremm": "data/bremm.png",
+    "cubediagonal": "data/cubediagonal.png",
+    "schumann": "data/schumann.png",
+    "steiger": "data/steiger.png",
+    "teulingfig2": "data/teulingfig2.png",
+    "ziegler": "data/ziegler.png",
 }
 
 
@@ -21,7 +24,8 @@ class Color2D:
         Args:
             map_name: Name of colormap to be used.
         """
-        self._data = imageio.imread(COLORMAPS[map_name])
+        self._data = imageio.imread(
+            pkg_resources.resource_string(__name__, COLORMAPS[map_name]))
 
     @staticmethod
     def list_colormaps():

@@ -12,7 +12,6 @@ setuptools.setup(
     long_description=long_description,
     url="https://github.com/xiamaz/Color2D",
     packages=setuptools.find_packages(),
-    py_modules=["color2D"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -21,7 +20,8 @@ setuptools.setup(
     install_requires=[
         "imageio",
     ],
+    include_package_data=True,
     package_data={
-        'static': ['data/*.png'],
+        'color2D': ['data/*.png'],
     },
 )
